@@ -42,6 +42,10 @@ public func onEvent(_ event: String, block: EventBlock?){
     eventBlocks[event] = block
 }
 
+public func removeAllEvents(){
+    eventBlocks.removeAll()
+}
+
 // MARK: - Event Handling
 func didConnecting(myPeerID: MCPeerID, peer: MCPeerID) {
     if let onConnecting = onConnecting {
