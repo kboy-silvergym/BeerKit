@@ -41,7 +41,7 @@ BeerKit.sendEvent("message", data: data)
 ### Observe Connected
 
 ```swift
-BeerKit.onConnect { (myPeerId, peerId) in
+BeerKit.onEvent("message") { (peerId, data) in
     DispatchQueue.main.async {
         self.deviceNameLabel.text = peerId.displayName
     }
