@@ -11,7 +11,7 @@ s.license      = "MIT"
 s.author             =   "Kei Fujikawa"
 s.social_media_url   = "http://twitter.com/kboy_silvergym"
 s.platform     = :ios, "10.0"
-s.source       = { :git => "https://github.com/kboy-silvergym/BeerKit", :tag => s.version }
+s.source       = { :git => "https://github.com/kboy-silvergym/BeerKit.git", :tag => s.version }
 s.source_files  = "BeerKit/**/*.swift"
 s.swift_version = '4.2'
 end
