@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "BeerKit"
-s.version      = "1.0.0"
+s.version      = "1.0.1"
 s.summary      = "The framework which is for MultipeerConnectivity."
 s.description  = <<-DESC
 - The framework which is for MultipeerConnectivity inspired by PeerKit.
