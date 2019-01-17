@@ -26,7 +26,7 @@ class ViewController: UIViewController {
             }
         }
         
-        BeerKit.onEvent { (peerId, event, data) in
+        BeerKit.onEvent("message") { (peerId, data) in
             guard let data = data,
                 let message = try? JSONDecoder().decode(MessageEntity.self, from: data) else {
                     return

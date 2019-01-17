@@ -9,12 +9,12 @@
 import MultipeerConnectivity
 
 public typealias PeerBlock = ((_ myPeerID: MCPeerID, _ peerID: MCPeerID) -> Void)
-public typealias EventBlock = ((_ peerID: MCPeerID, _ event: String, _ data: Data?) -> Void)
+public typealias EventBlock = ((_ peerID: MCPeerID, _ data: Data?) -> Void)
 
 var onConnecting: PeerBlock?
 var onConnect: PeerBlock?
 var onDisconnect: PeerBlock?
-var onEvent: EventBlock?
+var eventBlocks: [String: EventBlock] = [:]
 
 #if os(iOS)
 import UIKit
@@ -38,8 +38,8 @@ public func onDisconnect(_ block: PeerBlock?){
     onDisconnect = block
 }
 
-public func onEvent(_ block: EventBlock?){
-    onEvent = block
+public func onEvent(_ event: String, block: EventBlock?){
+    eventBlocks[event] = block
 }
 
 // MARK: - Event Handling
@@ -74,8 +74,8 @@ func didReceiveData(_ data: Data, fromPeer peer: MCPeerID) {
     do {
         let entity = try JSONDecoder().decode(EventEntity.self, from: data)
         DispatchQueue.main.async {
-            if let onEvent = onEvent {
-                onEvent(peer, entity.event, entity.data)
+            if let eventBlock = eventBlocks[entity.event] {
+                eventBlock(peer, entity.data)
             }
         }
     } catch {
