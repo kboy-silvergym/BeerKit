@@ -5,7 +5,7 @@
 
 ## About
 
-The framework which is for MultipeerConnectivity inspired by [PeerKit](https://github.com/jpsim/PeerKit). 🍻
+The framework which is for **MultipeerConnectivity** inspired by [PeerKit](https://github.com/jpsim/PeerKit). 🍻
 
 [PeerKit](https://github.com/jpsim/PeerKit) has some bags and it hasn't maintained recently, so I made this repository.
 
