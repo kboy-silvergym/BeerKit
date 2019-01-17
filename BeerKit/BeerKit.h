@@ -1,6 +1,6 @@
 //
-//  Beer.h
-//  Beer
+//  BeerKit.h
+//  BeerKit
 //
 //  Created by Kei Fujikawa on 2019/01/16.
 //  Copyright © 2019 kboy. All rights reserved.

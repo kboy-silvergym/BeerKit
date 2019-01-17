@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Beer
+import BeerKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        Beer.transceive(serviceType: "BeerDemo")
+        BeerKit.transceive(serviceType: "BeerDemo")
         return true
     }
 

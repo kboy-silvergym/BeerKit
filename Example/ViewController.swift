@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Beer
+import BeerKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -20,13 +20,13 @@ class ViewController: UIViewController {
         
         tableView.dataSource = self
         
-        Beer.onConnect { (myPeerId, peerId) in
+        BeerKit.onConnect { (myPeerId, peerId) in
             DispatchQueue.main.async {
                 self.deviceNameLabel.text = peerId.displayName
             }
         }
         
-        Beer.onEvent { (peerId, event, data) in
+        BeerKit.onEvent { (peerId, event, data) in
             guard let data = data,
                 let message = try? JSONDecoder().decode(MessageEntity.self, from: data) else {
                     return
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     @IBAction func sayHiButtonTapped(_ sender: Any) {
         let message = MessageEntity(name: UIDevice.current.name, message: "Hi")
         let data: Data = try! JSONEncoder().encode(message)
-        Beer.sendEvent("message", data: data)
+        BeerKit.sendEvent("message", data: data)
     }
 }
 
