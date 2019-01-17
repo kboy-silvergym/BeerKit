@@ -19,9 +19,12 @@ public class Session: NSObject {
     public private(set) var myPeerID: MCPeerID
     public private(set) var mcSession: MCSession
     public private(set) var state: MCSessionState = .notConnected
-
+    
     public init(displayName: String) {
-        myPeerID = MCPeerID(displayName: displayName)
+        let validatedName = type(of: self)
+            .validateDisplayName(displayName: displayName)
+        
+        myPeerID = MCPeerID(displayName: validatedName)
         mcSession = MCSession(peer: myPeerID, securityIdentity: nil, encryptionPreference: .none)
         super.init()
         mcSession.delegate = self
@@ -30,6 +33,25 @@ public class Session: NSObject {
     public func disconnect() {
         mcSession.delegate = nil
         mcSession.disconnect()
+    }
+    
+    // https://stackoverflow.com/a/44305215/10339551
+    // The maximum allowable length is 63 bytes in UTF-8 encoding.
+    // The displayName parameter may not be nil or an empty string.
+    // This method throws an exception if the displayName value is too long, empty, or nil.
+    private static func validateDisplayName(displayName original: String) -> String {
+        var validated: String = original
+        
+        // If empty, put something string
+        if validated.isEmpty {
+            validated = "Beer"
+        }
+        
+        // Allow only 10 bytes
+        if validated.count > 10 {
+            validated = String(validated.prefix(10))
+        }
+        return validated
     }
 }
 
