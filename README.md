@@ -7,7 +7,7 @@
 
 The framework which is for **MultipeerConnectivity** inspired by [PeerKit](https://github.com/jpsim/PeerKit). 🍻
 
-[PeerKit](https://github.com/jpsim/PeerKit) has some bags and it hasn't maintained recently, so I made this repository.
+[PeerKit](https://github.com/jpsim/PeerKit) has some bugs and it hasn't maintained recently. That's why I made this repository.
 
 ## Requirements
 Swift 4.2. Ready for use on iOS 10.0+
